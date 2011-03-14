@@ -49,8 +49,8 @@
 :javascript
   var eu;
 
-  head.ready('app', function(){
-    eu = new Workspace();
+  head.ready('eulagy_mod', function(){
+    eu = EulagyModule;
   });
 
   head.js(
@@ -58,5 +58,13 @@
     {underscore:  '/javascripts/lib/backbone/underscore-min.js'},
     {backbone:    '/javascripts/lib/backbone/backbone-min.js'},
     {jquery:      '/javascripts/lib/jquery.min.js'},
-    {app:         '/javascripts/app/workspace.js'}
+    {eulagy_mod:  '/javascripts/app/eulagy_module.js'},
+    {company:     '/javascripts/app/company.js'},
+    {application: '/javascripts/app/application.js'},
+    {eula:        '/javascripts/app/eula.js'}
   );
+
+%script{:type => 'text/template', :id => 'company-template'}
+  %div{:class => 'company'}
+    %div{:class => 'edit'}
+      %input{:class => 'company-input', :type => 'text', :value => ''}
