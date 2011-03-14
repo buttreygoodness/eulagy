@@ -50,11 +50,13 @@
   var eu;
 
   head.ready('app', function(){
-    eu = new Eulagy();
-    eu.init();
+    eu = new Workspace();
   });
 
   head.js(
-    {jquery: '/javascripts/lib/jquery.min.js'},
-    {app: '/javascripts/app/eulagy.js'}
+    {json2:       '/javascripts/lib/backbone/json2.js'},
+    {underscore:  '/javascripts/lib/backbone/underscore-min.js'},
+    {backbone:    '/javascripts/lib/backbone/backbone-min.js'},
+    {jquery:      '/javascripts/lib/jquery.min.js'},
+    {app:         '/javascripts/app/workspace.js'}
   );
