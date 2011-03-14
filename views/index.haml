@@ -1,0 +1,5 @@
+%h2 Listing Companies
+%ul
+  - (@companies).each do |company|
+    %li
+      %a{:href => "/company/#{company.id}"}= "#{company.name}"

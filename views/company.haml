@@ -1,0 +1,6 @@
+%h2= @company.name
+%h3 Applications
+%ul
+- (@company.applications).each do |application|
+  %li
+    %a{:href => "/application/#{application.id}"}= "#{application.name} (#{application.version})"

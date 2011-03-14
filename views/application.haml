@@ -1,0 +1,6 @@
+%h2= "#{@application.company.name} : #{@application.name} : #{@application.version}"
+%h3 Licenses
+%ul
+- (@application.licenses).each do |license|
+  %li.license
+    %div.text_full= license.text_full

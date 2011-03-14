@@ -1,0 +1,9 @@
+html, body {
+  padding: 0px;
+  margin: 0px;
+  font: 14px "Georgia", Times, "TimesNewRoman", serif;
+}
+
+div.hidden{
+  display: none;
+}
