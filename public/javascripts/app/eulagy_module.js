@@ -1,24 +1,22 @@
-/*global */
+/*global CompanyList ApplicationList EulaList CompanyView ApplicationView EulaView*/
 
 /**
-* EulagyModule
-* Module Export
-* Main eulagy module
+* Eulagy
+* Closure Public
+* Main Eulagy class
 */
-var EulagyModule = (function () {
-  var em = {};
+function Eulagy() {
   
-  function privateMethod(string) {
-    return ("privateMethod " + string);
-  }
-
-  em.moduleProperty = privateMethod("first module property");
+  this.url = "/api";
   
-  em.name = "EulagyModule";
-  
-  em.publicMethod = function () {
-    
+  this.lists = {
+    company: new CompanyList(),
+    application: new ApplicationList(),
+    eula: new EulaList()
   };
+  
+}
 
-  return em;
-}());
+Eulagy.prototype.stamp = function (string) {
+    return this.member + string;
+};

@@ -25,8 +25,6 @@ var ApplicationList = Backbone.Collection.extend({
   
   model: Application,
 
-  localStorage: new Store("applications"),
-
   done: function() {
     return this.filter(function(application){ return application.get('done'); });
   },
@@ -53,7 +51,7 @@ var ApplicationView = Backbone.View.extend({
   
   tagName:  "li",
   
-  template: _.template($('#item-template').html()),
+  template: _.template($('#application-template').html()),
 
   events: {
     "click .check"              : "toggleDone",
@@ -111,5 +109,3 @@ var ApplicationView = Backbone.View.extend({
   }
 
 });
-
-var Applications = new ApplicationList();

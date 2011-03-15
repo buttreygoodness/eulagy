@@ -49,22 +49,38 @@
 :javascript
   var eu;
 
-  head.ready('eulagy_mod', function(){
-    eu = EulagyModule;
+  head.ready("eulagy_mod", function(){
+    eu = new Eulagy();
+    eu.lists.company.refresh(#{@companies.to_json});
+  });
+  
+  head.ready("backbone", function(){
+    head.js(
+      {company:     '/javascripts/app/company.js'},
+      {application: '/javascripts/app/application.js'},
+      {eula:        '/javascripts/app/eula.js'},
+      {eulagy_mod:  '/javascripts/app/eulagy_module.js'}
+    )
   });
 
   head.js(
     {json2:       '/javascripts/lib/backbone/json2.js'},
     {underscore:  '/javascripts/lib/backbone/underscore-min.js'},
     {backbone:    '/javascripts/lib/backbone/backbone-min.js'},
-    {jquery:      '/javascripts/lib/jquery.min.js'},
-    {eulagy_mod:  '/javascripts/app/eulagy_module.js'},
-    {company:     '/javascripts/app/company.js'},
-    {application: '/javascripts/app/application.js'},
-    {eula:        '/javascripts/app/eula.js'}
+    {jquery:      '/javascripts/lib/jquery.min.js'}
   );
 
 %script{:type => 'text/template', :id => 'company-template'}
   %div{:class => 'company'}
     %div{:class => 'edit'}
       %input{:class => 'company-input', :type => 'text', :value => ''}
+      
+%script{:type => 'text/template', :id => 'application-template'}
+  %div{:class => 'application'}
+    %div{:class => 'edit'}
+      %input{:class => 'application-input', :type => 'text', :value => ''}
+      
+%script{:type => 'text/template', :id => 'eula-template'}
+  %div{:class => 'eula'}
+    %div{:class => 'edit'}
+      %input{:class => 'eula-input', :type => 'text', :value => ''}

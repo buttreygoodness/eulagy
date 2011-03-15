@@ -25,8 +25,6 @@ var EulaList = Backbone.Collection.extend({
   
   model: Eula,
 
-  localStorage: new Store("eulas"),
-
   done: function() {
     return this.filter(function(eula){ return eula.get('done'); });
   },
@@ -53,7 +51,7 @@ var EulaView = Backbone.View.extend({
   
   tagName:  "li",
   
-  template: _.template($('#item-template').html()),
+  template: _.template($('#eula-template').html()),
 
   events: {
     "click .check"              : "toggleDone",
@@ -111,5 +109,3 @@ var EulaView = Backbone.View.extend({
   }
 
 });
-
-var Eulas = new EulaList();
