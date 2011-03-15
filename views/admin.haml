@@ -3,36 +3,6 @@
     - (@companies).each do |company|
       %li{:class => "company_button"}
         %a{:href => "/company/#{company.id}"}= "#{company.name}"
-        
-#company_form.form_div
-  %form{:id => "company_admin", :action => "/api/company", :method => "post"}
-    %fieldset
-      %legend Company Admin
-      %div
-        %label{:for => "name"} Name
-        %input{:name => "name", :type => "textfield", :placeholder => "Company Name"}
-      %input{:type => "submit", :value => "Save"}
-
-  #application_form.form_div
-    %form{:id => "application_admin"}
-      %fieldset
-        %legend Application Admin
-        %div
-          %label{:for => "name"} Name
-          %input{:name => "name", :type => "textfield", :placeholder => "Application Name"}
-        %div
-          %label{:for => "version"} Version
-          %input{:name => "version", :type => "textfield", :placeholder => "Application Version"}
-        %input{:type => "submit", :value => "Save"}
-  
-    #license_form.form_div
-      %form{:id => "license_admin"}
-        %fieldset
-          %legend License Admin
-          %div
-            %label{:for => "text_full"} Contents
-            %textarea{:name => "text_full", :placeholder => "Paste EULA here."}
-          %input{:type => "submit", :value => "Save"}
     
     %p.toolbar
       %a{:href => "#", :class => "button", :id => "add_license"} Add a license
