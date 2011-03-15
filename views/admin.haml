@@ -3,12 +3,6 @@
     - (@companies).each do |company|
       %li{:class => "company_button"}
         %a{:href => "/company/#{company.id}"}= "#{company.name}"
-    
-    %p.toolbar
-      %a{:href => "#", :class => "button", :id => "add_license"} Add a license
-            
-  %p.toolbar
-    %a{:href => "#", :class => "button", :id => "add_application"} Add an application
 
 #company_pane
         
@@ -36,8 +30,8 @@
   head.js(
     {json2:       '/javascripts/lib/backbone/json2.js'},
     {underscore:  '/javascripts/lib/backbone/underscore-min.js'},
-    {backbone:    '/javascripts/lib/backbone/backbone-min.js'},
-    {jquery:      '/javascripts/lib/jquery.min.js'}
+    {jquery:      '/javascripts/lib/jquery.min.js'},
+    {backbone:    '/javascripts/lib/backbone/backbone.js'}
   );
 
 %script{:type => 'text/template', :id => 'company-template'}

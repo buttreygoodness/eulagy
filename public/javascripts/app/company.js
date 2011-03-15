@@ -1,4 +1,4 @@
-/*global Backbone Store _ $ alert*/
+/*global Backbone Store _ $ alert console eu*/
 
 var Company = Backbone.Model.extend({
 
@@ -23,5 +23,21 @@ var CompanyView = Backbone.View.extend({
   template: _.template($('#company-template').html()),
 
   events: {}
+
+});
+
+var CompanyListView = Backbone.View.extend({
+  
+  el: "#company_pane",
+
+  events: {},
+  
+  initialize: function(){
+    console.log("Initialize");
+  },
+    
+  render: function(){
+    $(this.el).html("<p>Blars</p>");
+  }
 
 });

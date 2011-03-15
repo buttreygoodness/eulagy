@@ -1,4 +1,5 @@
-/*global CompanyList ApplicationList EulaList CompanyView ApplicationView EulaView*/
+/*global CompanyList ApplicationList EulaList 
+CompanyView ApplicationView EulaView CompanyListView*/
 
 /**
 * Eulagy
@@ -7,13 +8,13 @@
 */
 function Eulagy() {
   
-  this.url = "/api";
-  
   this.lists = {
     company: new CompanyList(),
     application: new ApplicationList(),
     eula: new EulaList()
   };
+  
+  this.view = new CompanyListView();
   
 }
 
