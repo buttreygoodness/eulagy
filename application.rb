@@ -51,7 +51,13 @@ end
 get '/api/company/:id' do
   data = Company.get(params[:id])
   content_type :json
-  JSON.generate [{:id => data.id, :name => data.name}]
+  data.to_json
+end
+
+get '/api/companies' do
+  data = Company.all
+  content_type :json
+  data.to_json
 end
 
 # Create a new license

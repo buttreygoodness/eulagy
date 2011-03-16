@@ -1,10 +1,5 @@
-#companies
-  %ul
-    - (@companies).each do |company|
-      %li{:class => "company_button"}
-        %a{:href => "/company/#{company.id}"}= "#{company.name}"
-
 #company_pane
+  %ul#company_list
         
 #toolbar.toolbar
   %p
@@ -13,17 +8,16 @@
 :javascript
   var eu;
 
-  head.ready("eulagy_mod", function(){
-    eu = new Eulagy();
-    eu.lists.company.refresh(#{@companies.to_json});
+  head.ready("eula", function(){
+    Eulagy.init(#{@companies.to_json});
   });
   
   head.ready("backbone", function(){
     head.js(
+      {eulagy_mod:  '/javascripts/app/eulagy_module.js'},
       {company:     '/javascripts/app/company.js'},
       {application: '/javascripts/app/application.js'},
-      {eula:        '/javascripts/app/eula.js'},
-      {eulagy_mod:  '/javascripts/app/eulagy_module.js'}
+      {eula:        '/javascripts/app/eula.js'}
     )
   });
 
@@ -31,13 +25,12 @@
     {json2:       '/javascripts/lib/backbone/json2.js'},
     {underscore:  '/javascripts/lib/backbone/underscore-min.js'},
     {jquery:      '/javascripts/lib/jquery.min.js'},
-    {backbone:    '/javascripts/lib/backbone/backbone.js'}
+    {backbone:    '/javascripts/lib/backbone/backbone-min.js'}
   );
 
 %script{:type => 'text/template', :id => 'company-template'}
   %div{:class => 'company'}
-    %div{:class => 'edit'}
-      %input{:class => 'company-input', :type => 'text', :value => ''}
+    %a <%= name %>
       
 %script{:type => 'text/template', :id => 'application-template'}
   %div{:class => 'application'}

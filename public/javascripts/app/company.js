@@ -1,6 +1,6 @@
-/*global Backbone Store _ $ alert console eu*/
+/*global Backbone Store _ $ alert console Eulagy*/
 
-var Company = Backbone.Model.extend({
+Eulagy.Company = Backbone.Model.extend({
 
   EMPTY: "empty company...",
   
@@ -8,36 +8,55 @@ var Company = Backbone.Model.extend({
 
 });
 
-var CompanyList = Backbone.Collection.extend({
+Eulagy.CompanyList = Backbone.Collection.extend({
   
-  model: Company,
+  model: Eulagy.Company,
   
   url: "/api/companies"
 
 });
 
-var CompanyView = Backbone.View.extend({
+Eulagy.Companies = new Eulagy.CompanyList();
+
+Eulagy.CompanyView = Backbone.View.extend({
   
   tagName:  "li",
   
   template: _.template($('#company-template').html()),
 
-  events: {}
+  events: {},
+  
+  initialize: function(){
+    _.bindAll(this, 'render');
+  },
+  
+  render: function(){
+    $(this.el).html(this.template(this.model.toJSON()));
+    $(this.el).find("a").attr("href", "/company/" + this.model.id);
+    return this;
+  }
 
 });
 
-var CompanyListView = Backbone.View.extend({
+Eulagy.CompanyListView = Backbone.View.extend({
   
   el: "#company_pane",
 
   events: {},
   
   initialize: function(){
-    console.log("Initialize");
+    _.bindAll(this, 'render');
+    console.log("blars2", this);
+    Eulagy.Companies.each(function(company, i, j, k){
+      var view_ = new Eulagy.CompanyView({ model: company });
+      this.$("#company_list").append(view_.render().el);
+    });
   },
     
   render: function(){
-    $(this.el).html("<p>Blars</p>");
+    Eulagy.Companies.each(function(){
+      console.log("blars");
+    });
   }
 
 });
