@@ -1,5 +1,6 @@
 #company_pane
   %ul#company_list
+  #company_detail_pane
         
 #toolbar.toolbar
   %p
@@ -15,6 +16,7 @@
   head.ready("backbone", function(){
     head.js(
       {eulagy_mod:  '/javascripts/app/eulagy_module.js'},
+      {controller:  '/javascripts/app/control.js'},
       {company:     '/javascripts/app/company.js'},
       {application: '/javascripts/app/application.js'},
       {eula:        '/javascripts/app/eula.js'}
@@ -31,6 +33,10 @@
 %script{:type => 'text/template', :id => 'company-template'}
   %div{:class => 'company'}
     %a <%= name %>
+    
+%script{:type => 'text/template', :id => 'company-detail-template'}
+  %div{:class => 'company'}
+    %p <%= name %>
       
 %script{:type => 'text/template', :id => 'application-template'}
   %div{:class => 'application'}

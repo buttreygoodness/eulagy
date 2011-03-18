@@ -54,6 +54,24 @@ get '/api/company/:id' do
   data.to_json
 end
 
+get '/api/company/:id/applications' do
+  data = Company.get(params[:id])
+  content_type :json
+  data.applications.to_json
+end
+
+get '/api/application/:id' do
+  data = Application.get(params[:id])
+  content_type :json
+  data.to_json
+end
+
+get '/api/application/:id/versions' do
+  data = Application.get(params[:id])
+  content_type :json
+  data.versions.to_json
+end
+
 get '/api/companies' do
   data = Company.all
   content_type :json

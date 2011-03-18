@@ -32,7 +32,26 @@ Eulagy.CompanyView = Backbone.View.extend({
   
   render: function(){
     $(this.el).html(this.template(this.model.toJSON()));
-    $(this.el).find("a").attr("href", "/company/" + this.model.id);
+    $(this.el).find("a").attr("href", "#company/" + this.model.id);
+    return this;
+  }
+
+});
+
+Eulagy.CompanyDetailView = Backbone.View.extend({
+  
+  tagName:  "div",
+  
+  template: _.template($('#company-detail-template').html()),
+
+  events: {},
+  
+  initialize: function(){
+    _.bindAll(this, 'render');
+  },
+  
+  render: function(){
+    $(this.el).html(this.template(this.model.toJSON()));
     return this;
   }
 

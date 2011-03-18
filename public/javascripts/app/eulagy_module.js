@@ -1,4 +1,4 @@
-/*global console Companies*/
+/*global console Companies Backbone*/
 
 /**
 * Eulagy
@@ -14,7 +14,11 @@ var Eulagy = (function () {
   
   eu.init = function (companies_) {
     this.Companies.refresh(companies_);
+    
+    this.controller = new this.Control();
     this.view = new this.CompanyListView();
+    
+    Backbone.history.start();
   };
 
   return eu;
